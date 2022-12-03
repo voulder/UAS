@@ -192,7 +192,7 @@ router.post('/forgetpass', function(req, res, next) {
     console.log(data);
     if (!data) {
       res.send({
-        "Success": "This Email Is not registered!"
+        "Success": "This Email is not registered!"
       });
     } else {
 
