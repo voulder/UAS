@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" type="text/css" href="./assets/style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/feather-icons"></script>
+
+  <title>MAALF</title>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light py-1 fixed-top" style="background-color: #e3f2fd;">
+    <a class="navbar-brand" href="#">
+      <h2>maalf</h2>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#asd" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="asd">
+      <ul class="navbar-nav mr-auto mt-3">
+        <li class="nav-item">
+          <p class="nav-link1">How It Works</p>
+        </li>
+        <li class="nav-item">
+          <p class="nav-link1">Browse Jobs</p>
+        </li>
+        <div class="dropdown-divider"></div>
+      </ul>
+      <form class="form-inline my-2 my-lg-0 ">
+        <% if (login_info) { %>
+        <a href="/logout"><button class="btn btn-sm col-xs-2 margin-left" type="button"><b>LogOut</b></button></a>
+        <a href="/profile"><button class="btn btn-sm col-xs-2 margin-left" type="button"><b><%= req.body.email %></b></button></a>
+        <% } else { %>
+        <a href="/login"><button class="btn btn-sm col-xs-2 margin-left" type="button"><b>Login</b></button></a>
+        <a href="/SignUp"><button class="btn btn-sm col-xs-2 margin-left" type="button"><b>Sign up</b></button></a>
+        <% } %>
+        <a href="/PostAProject"><button type="button" id="btn1" class="btn btn-sm col-xs-2 margin-left"><b>Post a Project</b></button></a>
+      </form>
+    </div>
+  </nav>
+  <nav class="navbar navbar-expand-lg navbar-light bg-dark" id="navbar2">
+    <button class="navbar-toggler ml-auto hidden-sm-up float-xs-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Find Jobs</a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="http://google.com">By Skill</a>
+              <ul class="dropdown-menu">
+                <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="#">Find Graphic Design Jobs</a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Find Logo Design Jobs</a></li>
+                    <li><a class="dropdown-item" href="#">Find Web Design Jobs</a></li>
+                    <li><a class="dropdown-item" href="#">Find Banner Design Jobs</a></li>
+                    <li><a class="dropdown-item" href="#">Find Illustration Jobs</a></li>
+                  </ul>
+                </li>
+                <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="#">Find Writing Jobs</a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Find Copywriting Jobs</a></li>
+                    <li><a class="dropdown-item" href="#">Find Ghostwriting Jobs</a></li>
+                    <li><a class="dropdown-item" href="#">Find Other Writing Jobs</a></li>
+                  </ul>
+                </li>
+                <li><a class="dropdown-item" href="#">Find Legal Jobs</a></li>
+              </ul>
+            <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="http://google.com">By Language</a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Find Freelance Job in English</a></li>
+                <li><a class="dropdown-item" href="#">Find Freelance Job in Spanish</a></li>
+                <li><a class="dropdown-item" href="#">Find Freelance Job in French</a></li>
+                <li><a class="dropdown-item" href="#">Find Freelance Job in Chinese</a></li>
+              </ul>
+            </li>
+            <ul class="dropdown-menu"></ul>
+            <li><a class="dropdown-item" href="#">Featured Jobs</a></li>
+        </li>
+      </ul>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Hire Freelancer</a>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="http://google.com">By Skill</a>
+            <ul class="dropdown-menu">
+              <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="#">Hire Graphic Designers</a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Hire Photoshop Designers</a></li>
+                  <li><a class="dropdown-item" href="#">Hire 3D Animators</a></li>
+                  <li><a class="dropdown-item" href="#">Hire Packaging Designers</a></li>
+                  <li><a class="dropdown-item" href="#">FHire Fashion Designers</a></li>
+                </ul>
+              </li>
+              <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="#">Hire Software Developers</a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Hire C++ Software Developers</a></li>
+                  <li><a class="dropdown-item" href="#">Hire Linux Software Developers</a></li>
+                  <li><a class="dropdown-item" href="#">Hire Database Software Developers</a></li>
+                </ul>
+              </li>
+              <li><a class="dropdown-item" href="#">Hire Lawyers</a></li>
+              <li><a class="dropdown-item" href="#">Hire Seo Specialist</a></li>
+              <li><a class="dropdown-item" href="#">Hire Data Entry Clerks</a></li>
+            </ul>
+          <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="http://google.com">By Location</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Hire Freelancers in Canada</a></li>
+              <li><a class="dropdown-item" href="#">Hire Freelancers in Bangladesh</a></li>
+              <li><a class="dropdown-item" href="#">Hire Freelancers in Turkey</a></li>
+              <li><a class="dropdown-item" href="#">Hire Freelancers in the United Kingdom</a></li>
+            </ul>
+          </li>
+          <ul class="dropdown-menu"></ul>
+          <li><a class="dropdown-item" href="#">Skill Categories</a></li>
+      </li>
+      </ul>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Get Ideas</a>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <ul class="dropdown-menu"></ul>
+          <li><a class="dropdown-item" href="#">Get Web Design Ideas</a></li>
+          <li><a class="dropdown-item" href="#">Get Wordpress Ideas</a></li>
+          <li><a class="dropdown-item" href="#">Get Illustration Ideas</a></li>
+          <li><a class="dropdown-item" href="#">Get Product Design Ideas</a></li>
+          <li><a class="dropdown-item" href="#">Get Branding Ideas</a></li>
+        </ul>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">About</a>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <ul class="dropdown-menu"></ul>
+          <li><a class="dropdown-item" href="#">Enterprise</a></li>
+          <li><a class="dropdown-item" href="#">Membership</a></li>
+          <li><a class="dropdown-item" href="#">Preferred Freelancer Program</a></li>
+          <li><a class="dropdown-item" href="#">Get Verified</a></li>
+        </ul>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Resources</a>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <ul class="dropdown-menu"></ul>
+          <li><a class="dropdown-item" href="#">What is Adobe Photoshop</a></li>
+          <li><a class="dropdown-item" href="#">What is HTML</a></li>
+          <li><a class="dropdown-item" href="#">What is Internet Marketing</a></li>
+          <li><a class="dropdown-item" href="#">What is PHP</a></li>
+          <li><a class="dropdown-item" href="#">What is Web Design</a></li>
+        </ul>
+      </li>
+      </ul>
+      </li>
+      </ul>
+      </li>
+      </ul>
+    </div>
+  </nav>
+  <section class="video">
+    <video poster="poster.jpg" autoplay playsinline muted loop>
+      <source src="images/video.mp4" type="video/mp4">
+    </video>
+    <div class="home">
+      <div class="title mx-2">
+        <h1>Hire the best freelancers for any job, online.</h1>
+        <h3>Millions of people use freelancer.com to turn their ideas into reality.</h3>
+      </div>
+      <div class="hirebutton mx-5 px-5">
+        <a href="/PostAProject"><button class="button1" type="button"><span></span>Hire a Freelancer</button></a>
+        <a href="/EarnMoney"><button class="button1" type="button"><span></span>Earn Money Freelancing</button></a>
+      </div>
+    </div>
+    </div>
+
+  </section>
+
+  <section class="needjob">
+    <div class="navbarbottom text-center">
+      <h3 class="mt-5">As used by
+        <a href="https://amazon.com" class="active">
+          <img src="https://germainmaureau.com/app/uploads/2020/05/Amazon-logo.png" , width=px, height="40px">
+        </a>
+        <a href="https://facebook.com">
+          <img src="https://pngimg.com/uploads/facebook_logos/facebook_logos_PNG19764.png" , width=px, height="60px">
+        </a>
+        <a href="https://deloitte.com">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Deloitte_Logo.png/1200px-Deloitte_Logo.png" , width=px, height="40px">
+        </a>
+        <a href="https://nasa.gov">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/NASA_logo.svg/2449px-NASA_logo.svg.png" , width=px, height="40px">
+        </a>
+        <a href="https://ibm.com">
+          <img src="https://www.freepnglogos.com/uploads/ibm-logo-png/ibm-logo-ibm-logos-download-12.png" , width=px, height="30px">
+        </a>
+        <a href="https://airbus.com">
+          <img src="https://logos-world.net/wp-content/uploads/2020/03/Airbus-Logo.png" , width=px, height="40px">
+        </a>
+        <a href="https://telstra.com">
+          <img src="https://www.iicom.org/wp-content/uploads/new-Telstra-logo.png" , width=px, height="40px">
+        </a>
+        <a href="https://fujitsu.com">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Fujitsu-Logo.svg/1280px-Fujitsu-Logo.svg.png" , width=px, height="40px">
+        </a>
+        <a href="https://google.com">
+          <img src="https://www.pngall.com/wp-content/uploads/5/Google-Logo-PNG-Free-Image.png" , width=px, height="50px">
+        </a>
+      </h3>
+      <br>
+      <hr>
+      <br><br>
+    </div>
+
+    <div class="container ">
+      <h1 class="mt-3">Need something done?</h1>
+
+      <div class="row mb-4">
+        <div class="col-sm mx-3 px-2 py-3  ">
+
+          <div class="row">
+            <div class="row-sm ml-5">
+              <img _ngcontent-webapp-c106="" class="ImageElement" src="https://www.f-cdn.com/assets/main/en/assets/illustrations/project/post-a-project.svg" alt="Post a job Icon" height="50" width="55">
+            </div>
+
+            <div class="">
+              <h5 class="my-3 ">Post a job</h5>
+              <br>
+
+            </div>
+
+            <p class="ml-3">It’s free and easy to post a job. Simply fill
+              in a title, description and budget and competitive bids come within minutes.</p>
+          </div>
+        </div>
+        <div class="col-sm mx-3 px-2 py-3  ">
+          <div class="row">
+            <div class="row-sm ml-3 pl-3">
+              <img _ngcontent-webapp-c106="" class="ImageElement" src="https://www.f-cdn.com/assets/main/en/assets/illustrations/freelancer/work.svg" alt="Choose freelancers Icon" height="50" width="55">
+            </div>
+
+            <div class="">
+              <h5 class="my-3 text-left ">Choose freelancers</h5>
+              <br>
+            </div>
+
+            <p class="ml-5">No job is too big or too small.
+              We've got freelancers for jobs of any size or budget, across 1800+ skills. No job is too complex. We can get it done!</p>
+          </div>
+        </div>
+        <div class="col-sm mx-3 px-2 py-3  ">
+          <div class="row">
+            <div class="row-sm ml-5 pl-3">
+              <img _ngcontent-webapp-c106="" class="ImageElement" src="https://www.f-cdn.com/assets/main/en/assets/illustrations/payment/pay-safely.svg" alt="Pay safely Icon" height="50" width="55">
+            </div>
+
+            <div class="">
+              <h5 class="my-3 text-left ">Pay safely</h5>
+              <br>
+            </div>
+
+            <p class="ml-5">Only pay for work when it has been
+              completed and you're 100% satisfied with the quality using our milestone payment system.</p>
+          </div>
+        </div>
+        <div class="col-sm mx-3 px-2 py-3  ">
+          <div class="row">
+            <div class="row-sm ml-4 pl-2">
+              <img _ngcontent-webapp-c106="" class="ImageElement" src="https://www.f-cdn.com/assets/main/en/assets/illustrations/freelancer/about-me.svg" alt="We’re here to help Icon" height="50" width="55">
+            </div>
+
+            <div class="">
+              <h5 class="my-3 text-left ">We're here to help </h5>
+              <br>
+            </div>
+
+            <p class="ml-5">Our talented team of recruiters can
+              help you find the best freelancer for the job and our technical co-pilots can even manage the project for you.
+            </p>
+          </div>
+        </div>
+      </div>
+      <br><br>
+      <hr>
+      <br><br>
+
+      <div class="container ">
+        <h1 class="mt-3">What's great about it?</h1>
+
+        <div class="row mb-4">
+          <div class="col-sm mx-3 px-2 py-3  ">
+
+            <div class="row">
+              <div class="row-sm ml-3 pl-3">
+                <img _ngcontent-webapp-c106="" class="ImageElement" src="https://www.f-cdn.com/assets/main/en/assets/illustrations/portfolio/browse-portfolios.svg" alt="Browse portfolios Icon" height="50" width="55">
+              </div>
+
+              <div class="">
+                <h5 class="my-3 text-left ">Browse portofolios</h5>
+                <br>
+
+              </div>
+
+              <p class="ml-5">Find professionals you can trust by browsing
+                their samples of previous work and reading their profile reviews.</p>
+            </div>
+          </div>
+          <div class="col-sm mx-3 px-2 py-3  ">
+            <div class="row">
+              <div class="row-sm ml-5 pl-2">
+                <img _ngcontent-webapp-c106="" class="ImageElement" src="https://www.f-cdn.com/assets/main/en/assets/illustrations/quality-rewards/rank-higher.svg" alt="Quality work Icon" height="50" width="55">
+              </div>
+
+              <div class="">
+                <h5 class="my-3 text-left ">Fast bids</h5>
+                <br>
+              </div>
+
+              <p class="ml-5">Receive obligation free quotes from our talented
+                freelancers fast. 80% of projects get bid on within 60 seconds.</p>
+            </div>
+          </div>
+          <div class="col-sm mx-3 px-2 py-3  ">
+            <div class="row">
+              <div class="row-sm ml-5 pl-2">
+                <img _ngcontent-webapp-c106="" class="ImageElement" src="https://www.f-cdn.com/assets/main/en/assets/illustrations/bids/bids-alt.svg" alt="Fast bids Icon" height="50" width="55">
+              </div>
+
+              <div class="">
+                <h5 class="my-3 text-left ">Quality work</h5>
+                <br>
+              </div>
+
+              <p class="ml-5">Freelancer.com has by far the largest pool of quality freelancers
+                globally- over 50 million to choose from.</p>
+            </div>
+          </div>
+          <div class="col-sm mx-3 px-2 py-3  ">
+            <div class="row">
+              <div class="row-sm ml-5">
+                <img _ngcontent-webapp-c106="" class="ImageElement" src="https://www.f-cdn.com/assets/main/en/assets/illustrations/time/track-progress.svg" alt="Track progress Icon" height="50" width="55">
+              </div>
+
+              <div class="">
+                <h5 class="my-3 text-left ">Track progress </h5>
+                <br>
+              </div>
+
+              <p class="ml-5">Keep up-to-date and on-the-go with our time tracker,
+                and mobile app. Always know what freelancers are up to.
+              </p>
+            </div>
+          </div>
+        </div>
+        <br>
+        <hr><br><br>
+        <div class="container2">
+          <h1 class="mt-3">Make it Real with Freelancer.</h1>
+          <a>Get some Inspirations from 1800+ skills</a>
+          <div class="row mb-4">
+            <div class="col-sm mx-0 px-2 py-3  ">
+              <a style="color : black" href="/LogoDesign">
+                <div class="img-hover-zoom">
+                  <img src="https://dt2sdf0db8zob.cloudfront.net/wp-content/uploads/2018/08/Best-REALLY-FREE-Logo-Makers-Logo-Design-Generators-image39.png" width="270" alt="This zooms-in really well and smooth">
+                </div>
+                <h4 class="text-left"> Logo Design.
+                </h4>
+                <h4 class="text-left">
+                  $30 USD in 1 day.</h4>
+              </a>
+            </div>
+            <div class="col-sm mx-0 px-2 py-3  ">
+              <a style="color:black" href="/PackageDesign">
+                <div class="img-hover-zoom">
+                  <img src="https://assets-global.website-files.com/5f6bd5d85587b65348960e08/5ffc430b19ea9dab74c0fc43_packaging-design-product.png" width="320" alt="This zooms-in really well and smooth">
+                </div>
+                <h4 class="text-left"> Package Design.
+                </h4>
+                <h4 class="text-left">
+                  $280 USD in 4 days.</h4>
+              </a>
+            </div>
+            <div class="col-sm mx-0 px-2 py-3  ">
+              <a style="color:black" href="/MobileDesign">
+                <div class="img-hover-zoom">
+                  <img src="https://designshack.net/wp-content/uploads/mobile-app-template.jpg" width="290" alt="This zooms-in really well and smooth">
+                </div>
+                <h4 class="text-left"> Mobile Design.
+                </h4>
+                <h4 class="text-left">
+                  $600 USD in 4 days.</h4>
+            </div></a>
+            <div class="col-sm mx-0 px-2 py-3  ">
+              <a style="color: black" href="/WordPress">
+                <div class="img-hover-zoom">
+                  <img src="https://idwebhost.com/blog/wp-content/uploads/2018/03/wordpress-923188_1920.jpg" width="290" alt="This zooms-in really well and smooth">
+                </div>
+                <h4 class="text-left"> WordPress.
+                </h4>
+                <h4 class="text-left">
+                  $45 USD in 1 day.</h4>
+              </a>
+            </div>
+            <div class="col-sm mx-0 px-2 py-3  ">
+              <a style="color:black" href="/LogoDesign">
+                <div class="img-hover-zoom">
+                  <img src="data:image/jpeg;base64,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" width="215" alt="This zooms-in really well and smooth">
+                </div>
+                <h4 class="text-left">Logo Design.
+                </h4>
+                <h4 class="text-left">
+                  $30 USD in 1 day.</h4>
+              </a>
+            </div>
+            <div class="col-sm mx-0 px-2 py-3  ">
+              <a style="color:black" href="/Website">
+                <div class="img-hover-zoom">
+                  <img src="https://www.f-cdn.com/assets/main/en/assets/home/crowd-favorite-redesign/website-1.jpg?image-optimizer=force&width=426" width="245" alt="This zooms-in really well and smooth">
+                </div>
+                <h4 class="text-left">Website.
+                </h4>
+                <h4 class="text-left">
+                  $100 USD in 6 days.</h4>
+              </a>
+            </div>
+            <div class="col-sm mx-0 px-2 py-3  ">
+              <a style="color:black" href="/Website">
+                <div class="img-hover-zoom">
+                  <img src="https://www.f-cdn.com/assets/main/en/assets/home/crowd-favorite-redesign/website-design-1.jpg?image-optimizer=force&width=426" width="245">
+                </div>
+                <h4 class="text-left"> Website Design.
+                  <h4 class="text-left">
+                    $100 USD in 1 day.</h4>
+              </a>
+            </div>
+            <div class="col-sm mx-0 px-2 py-3  ">
+              <a style="color:black" href="/Illustration">
+                <div class="img-hover-zoom">
+                  <img src="https://www.f-cdn.com/assets/main/en/assets/home/crowd-favorite-redesign/illustration-v2.jpg?image-optimizer=force&width=426" width="244" alt="This zooms-in really well and smooth">
+                </div>
+                <h4 class="text-left">Illustration.
+                </h4>
+                <h4 class="text-left">
+                  $155 USD in 2 days.</h4>
+              </a>
+            </div>
+            <div class="col-sm mx-0 px-2 py-3  ">
+              <a style="color:black" href="/WordPress">
+                <div class="img-hover-zoom">
+                  <img src="https://content-management-files.canva.com/cdn-cgi/image/f=auto,q=70/42e4655b-8bb1-45c4-8a4b-826915317560/header_logos2.jpg" width="258" alt="This zooms-in really well and smooth">
+                </div>
+                <h4 class="text-left">WordPress.
+                </h4>
+                <h4 class="text-left">
+                  $150 USD in 18 days.</h4>
+              </a>
+            </div>
+            <div class="col-sm mx-0 px-2 py-3  ">
+              <a style="color:black" href="/PackageDesign">
+                <div class="img-hover-zoom">
+                  <img src="https://images.squarespace-cdn.com/content/v1/5d588bfe1f704e0001df0790/1586906340268-AV2BEKKU1YINXAZQT9KA/Screen%2BShot%2B2020-04-09%2Bat
+              %2B5.48.19%2BPM.jpg?format=1000w" width="290" alt="This zooms-in really well and smooth">
+                </div>
+                <h4 class="text-left">Package Design.
+                </h4>
+                <h4 class="text-left">
+                  $100 USD in 6 days.</h4>
+              </a>
+            </div>
+            <div class="col-sm mx-0 px-2 py-3  ">
+              <a style="color:black" href="/MobileDesign">
+                <div class="img-hover-zoom">
+                  <img src="https://www.mindinventory.com/blog/wp-content/uploads/2021/11/mobile-ux-design-best-practices.png" width="290" alt="This zooms-in really well and smooth">
+                </div>
+                <h4 class="text-left">Mobile Design.
+                </h4>
+                <h4 class="text-left">
+                  $100 USD in 1 day.</h4>
+              </a>
+            </div>
+            <div class="col-sm mx-0 px-2 py-3  ">
+              <a style="color:black" href="PackageDesign">
+                <div class="img-hover-zoom">
+                  <img src="https://static-cse.canva.com/blob/567371/50insanelycreativeandstunningpackagingdesigns.jpg" width="295" alt="This zooms-in really well and smooth">
+                </div>
+                <h4 class="text-left">Package Design.
+                </h4>
+                <h4 class="text-left">
+                  $155 USD in 2 days.</h4>
+              </a>
+            </div>
+            <div class="col-sm mx-0 px-2 py-3  ">
+              <a style="color:black" href="/Website">
+                <div class="img-hover-zoom">
+                  <img src="data:image/jpeg;base64,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
+              REBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQP//Z" width="270" alt="This zooms-in really well and smooth">
+                </div>
+                <h4 class="text-left">Website.
+                </h4>
+                <h4 class="text-left">
+                  $200 USD in 9 days.</h4>
+              </a>
+            </div>
+            <div class="col-sm mx-0 px-2 py-3  ">
+              <a style="color:black" href="/3DModeling">
+                <div class="img-hover-zoom">
+                  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpgHRqU8D3vU5Kg_W_pN10H18uaBkyNMHq4Q&usqp=CAU" width="270" alt="This zooms-in really well and smooth">
+                </div>
+                <h4 class="text-left">3D Modeling.
+                </h4>
+                <h4 class="text-left">
+                  $110 USD in 28 days.</h4>
+              </a>
+            </div>
+            <div class="col-sm mx-0 px-2 py-3  ">
+              <a style="color:black" href="/LogoDesign">
+                <div class="img-hover-zoom">
+                  <img src="https://cdn.mos.cms.futurecdn.net/fxBBxdZfSuyngvcNKpPSsU-1200-80.jpg" width="360">
+                </div>
+                <h4 class="text-left">Logo Design.
+                </h4>
+                <h4 class="text-left">
+                  $20 USD in 3 days.</h4>
+              </a>
+            </div>
+            <div class="col-sm mx-0 px-2 py-3  ">
+              <a style="color:black" href="/GraphicDesign">
+                <div class="img-hover-zoom">
+                  <img src="https://de927adv5b23k.cloudfront.net/wp-content/uploads/2017/09/03191736/shutterstock_447954613.jpg" width="290">
+                </div>
+                <h4 class="text-left">Graphic Design.
+                </h4>
+                <h4 class="text-left">
+                  $60 USD in 10 days.</h4>
+              </a>
+            </div>
+          </div>
+          <br>
+          <div class="hirebutton mx-5 px-5 text-center">
+            <a href="/viewmore"><button class="button2" type="button"><span></span>View More Projects</button></a>
+
+          </div>
+          <br><br>
+          <hr>
+          <br><br>
+          <div class="container3">
+            <h1>Get work done in over 1800 different categories</h1>
+            <br><br>
+            <table>
+              <tr>
+                <th>
+                  <p class="button3"><svg xmlns="http://www.w3.org/2000/svg" width="40" style="color: #6C20B9;" fill="currentColor" class="bi bi-pc-display" viewBox="0 0 16 16">
+                      <path d="M8 1a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1V1Zm1 13.5a.5.5 0 1 0 1 0 .5.5 0 0 0-1 0Zm2 0a.5.5 0 1 0 1 0 .5.5 0 0 0-1 0ZM9.5 1a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1h-5ZM9 3.5a.5.5 0 0 0 .5.5h5a.5.5 0 0 0 0-1h-5a.5.5 0 0 0-.5.5ZM1.5 2A1.5 1.5 0 0 0 0 3.5v7A1.5 1.5 0 0 0 1.5 12H6v2h-.5a.5.5 0 0 0 0 1H7v-4H1.5a.5.5 0 0 1-.5-.5v-7a.5.5 0 0 1 .5-.5H7V2H1.5Z" />
+                    </svg>
+                    Website Design</p>
+                </th>
+
+                <th>
+                  <p class="button3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40px" style="color: #6C20B9;" fill="currentColor" class="bi bi-translate" viewBox="0 0 16 16">
+                      <path d="M4.545 6.714 4.11 8H3l1.862-5h1.284L8 8H6.833l-.435-1.286H4.545zm1.634-.736L5.5 3.956h-.049l-.679 2.022H6.18z" />
+                      <path d="M0 2a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v3h3a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-3H2a2 2 0 0 1-2-2V2zm2-1a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h7a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H2zm7.138 9.995c.193.301.402.583.63.846-.748.575-1.673 1.001-2.768 1.292.178.217.451.635.555.867 1.125-.359 2.08-.844 2.886-1.494.777.665 1.739 1.165 2.93 1.472.133-.254.414-.673.629-.89-1.125-.253-2.057-.694-2.82-1.284.681-.747 1.222-1.651 1.621-2.757H14V8h-3v1.047h.765c-.318.844-.74 1.546-1.272 2.13a6.066 6.066 0 0 1-.415-.492 1.988 1.988 0 0 1-.94.31z" />
+                    </svg>
+                    Translation
+                  </p>
+                </th>
+
+                <th>
+                  <p class="button3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40px" style="color: #6C20B9;" fill="currentColor" class="bi bi-filetype-py" viewBox="0 0 16 16">
+                      <path fill-rule="evenodd" d="M14 4.5V14a2 2 0 0 1-2 2H7v-1h5a1 1 0 0 0 1-1V4.5h-2A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v9H2V2a2 2 0 0 1 2-2h5.5L14 4.5ZM0 11.85h1.6c.289 0 .533.06.732.179.201.117.355.276.46.477.105.201.158.427.158.677 0 .25-.054.476-.16.677-.106.199-.26.357-.464.474a1.452 1.452 0 0 1-.732.173H.79v1.342H0V11.85Zm2.06 1.714a.795.795 0 0 0 .085-.381c0-.227-.062-.4-.185-.521-.123-.122-.294-.182-.513-.182H.788v1.406h.66a.794.794 0 0 0 .374-.082.574.574 0 0 0 .238-.24Zm2.963.75v1.535H4.23v-1.52L2.89 11.85h.876l.853 1.696h.032l.856-1.696h.855l-1.339 2.464Z" />
+                    </svg>
+                    Python
+                  </p>
+                </th>
+
+                <th>
+                  <p class="button3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40px" style="color: #6C20B9;" fill="currentColor" class="bi bi-file-earmark-spreadsheet" viewBox="0 0 16 16">
+                      <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V9H3V2a1 1 0 0 1 1-1h5.5v2zM3 12v-2h2v2H3zm0 1h2v2H4a1 1 0 0 1-1-1v-1zm3 2v-2h3v2H6zm4 0v-2h3v1a1 1 0 0 1-1 1h-2zm3-3h-3v-2h3v2zm-7 0v-2h3v2H6z" />
+                    </svg>
+                    Excel
+                  </p>
+                </th>
+
+                <th>
+                  <p class="button3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40px" style="color: #6C20B9;" fill="currentColor" class="bi bi-image" viewBox="0 0 16 16">
+                      <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
+                      <path d="M2.002 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2h-12zm12 1a1 1 0 0 1 1 1v6.5l-3.777-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12V3a1 1 0 0 1 1-1h12z" />
+                    </svg>
+                    Photoshop
+                  </p>
+                </th>
+              </tr>
+
+              <tr>
+                <th>
+                  <p class="button3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40px" style="color: #6C20B9;" fill="currentColor" class="bi bi-phone" viewBox="0 0 16 16">
+                      <path d="M11 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h6zM5 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H5z" />
+                      <path d="M8 14a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
+                    </svg>
+                    Mobile Apps
+                  </p>
+                </th>
+
+                <th>
+                  <p class="button3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40px" style="color: #6C20B9;" fill="currentColor" class="bi bi-eyeglasses" viewBox="0 0 16 16">
+                      <path d="M4 6a2 2 0 1 1 0 4 2 2 0 0 1 0-4zm2.625.547a3 3 0 0 0-5.584.953H.5a.5.5 0 0 0 0 1h.541A3 3 0 0 0 7 8a1 1 0 0 1 2 0 3 3 0 0 0 5.959.5h.541a.5.5 0 0 0 0-1h-.541a3 3 0 0 0-5.584-.953A1.993 1.993 0 0 0 8 6c-.532 0-1.016.208-1.375.547zM14 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0z" />
+                    </svg>
+                    Research
+                  </p>
+                </th>
+
+                <th>
+                  <p class="button3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40px" style="color: #6C20B9;" fill="currentColor" class="bi bi-wordpress" viewBox="0 0 16 16">
+                      <path d="M12.633 7.653c0-.848-.305-1.435-.566-1.892l-.08-.13c-.317-.51-.594-.958-.594-1.48 0-.63.478-1.218 1.152-1.218.02 0 .039.002.058.003l.031.003A6.838 6.838 0 0 0 8 1.137 6.855 6.855 0 0 0 2.266 4.23c.16.005.313.009.442.009.717 0 1.828-.087 1.828-.087.37-.022.414.521.044.565 0 0-.371.044-.785.065l2.5 7.434 1.5-4.506-1.07-2.929c-.369-.022-.719-.065-.719-.065-.37-.022-.326-.588.043-.566 0 0 1.134.087 1.808.087.718 0 1.83-.087 1.83-.087.37-.022.413.522.043.566 0 0-.372.043-.785.065l2.48 7.377.684-2.287.054-.173c.27-.86.469-1.495.469-2.046zM1.137 8a6.864 6.864 0 0 0 3.868 6.176L1.73 5.206A6.837 6.837 0 0 0 1.137 8z" />
+                      <path d="M6.061 14.583 8.121 8.6l2.109 5.78c.014.033.03.064.049.094a6.854 6.854 0 0 1-4.218.109zm7.96-9.876c.03.219.047.453.047.706 0 .696-.13 1.479-.522 2.458l-2.096 6.06a6.86 6.86 0 0 0 2.572-9.224z" />
+                      <path fill-rule="evenodd" d="M0 8c0-4.411 3.589-8 8-8 4.41 0 8 3.589 8 8s-3.59 8-8 8c-4.411 0-8-3.589-8-8zm.367 0c0 4.209 3.424 7.633 7.633 7.633 4.208 0 7.632-3.424 7.632-7.633C15.632 3.79 12.208.367 8 .367 3.79.367.367 3.79.367 8z" />
+                    </svg>
+                    Wordpress
+                  </p>
+                </th>
+
+                <th>
+                  <p class="button3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40px" style="color: #6C20B9;" fill="currentColor" class="bi bi-journal-text" viewBox="0 0 16 16">
+                      <path d="M5 10.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z" />
+                      <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z" />
+                      <path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z" />
+                    </svg>
+                    Ghostwriting
+                  </p>
+                </th>
+
+                <th>
+                  <p class="button3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40px" style="color: #6C20B9;" fill="currentColor" class="bi bi-list-columns" viewBox="0 0 16 16">
+                      <path fill-rule="evenodd" d="M0 .5A.5.5 0 0 1 .5 0h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 0 .5Zm13 0a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5Zm-13 2A.5.5 0 0 1 .5 2h8a.5.5 0 0 1 0 1h-8a.5.5 0 0 1-.5-.5Zm13 0a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5Zm-13 2A.5.5 0 0 1 .5 4h10a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5Zm13 0a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5Zm-13 2A.5.5 0 0 1 .5 6h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5Zm13 0a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5Zm-13 2A.5.5 0 0 1 .5 8h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5Zm13 0a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5Zm-13 2a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5Zm13 0a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5Zm-13 2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5Zm13 0a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5Zm-13 2a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5Zm13 0a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5Z" />
+                    </svg>
+                    Technical Writing
+                  </p>
+                </th>
+              </tr>
+
+              <tr>
+                <th>
+                  <p class="button3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40px" style="color: #6C20B9;" fill="currentColor" class="bi bi-android" viewBox="0 0 16 16">
+                      <path d="M2.76 3.061a.5.5 0 0 1 .679.2l1.283 2.352A8.94 8.94 0 0 1 8 5a8.94 8.94 0 0 1 3.278.613l1.283-2.352a.5.5 0 1 1 .878.478l-1.252 2.295C14.475 7.266 16 9.477 16 12H0c0-2.523 1.525-4.734 3.813-5.966L2.56 3.74a.5.5 0 0 1 .2-.678ZM5 10a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm6 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z" />
+                    </svg>
+                    Android Apps
+                  </p>
+                </th>
+
+                <th>
+                  <p class="button3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40px" style="color: #6C20B9;" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                      <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                      <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+                    </svg>
+                    Research Writing
+                  </p>
+                </th>
+
+                <th>
+                  <p class="button3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40px" style="color: #6C20B9;" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                      <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                    </svg>
+                    Web Search
+                  </p>
+                </th>
+
+                <th>
+                  <p class="button3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40px" style="color: #6C20B9;" fill="currentColor" class="bi bi-clipboard-minus" viewBox="0 0 16 16">
+                      <path fill-rule="evenodd" d="M5.5 9.5A.5.5 0 0 1 6 9h4a.5.5 0 0 1 0 1H6a.5.5 0 0 1-.5-.5z" />
+                      <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
+                      <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
+                    </svg>
+                    Copywriting
+                  </p>
+                </th>
+
+                <th>
+                  <p class="button3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40px" style="color: #6C20B9;" fill="currentColor" class="bi bi-chat-quote" viewBox="0 0 16 16">
+                      <path d="M2.678 11.894a1 1 0 0 1 .287.801 10.97 10.97 0 0 1-.398 2c1.395-.323 2.247-.697 2.634-.893a1 1 0 0 1 .71-.074A8.06 8.06 0 0 0 8 14c3.996 0 7-2.807 7-6 0-3.192-3.004-6-7-6S1 4.808 1 8c0 1.468.617 2.83 1.678 3.894zm-.493 3.905a21.682 21.682 0 0 1-.713.129c-.2.032-.352-.176-.273-.362a9.68 9.68 0 0 0 .244-.637l.003-.01c.248-.72.45-1.548.524-2.319C.743 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7-3.582 7-8 7a9.06 9.06 0 0 1-2.347-.306c-.52.263-1.639.742-3.468 1.105z" />
+                      <path d="M7.066 6.76A1.665 1.665 0 0 0 4 7.668a1.667 1.667 0 0 0 2.561 1.406c-.131.389-.375.804-.777 1.22a.417.417 0 0 0 .6.58c1.486-1.54 1.293-3.214.682-4.112zm4 0A1.665 1.665 0 0 0 8 7.668a1.667 1.667 0 0 0 2.561 1.406c-.131.389-.375.804-.777 1.22a.417.417 0 0 0 .6.58c1.486-1.54 1.293-3.214.682-4.112z" />
+                    </svg>
+                    Blogging
+                  </p>
+                </th>
+              </tr>
+
+              <tr>
+                <th>
+                  <p class="button3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40px" style="color: #6C20B9;" fill="currentColor" class="bi bi-apple" viewBox="0 0 16 16">
+                      <path d="M11.182.008C11.148-.03 9.923.023 8.857 1.18c-1.066 1.156-.902 2.482-.878 2.516.024.034 1.52.087 2.475-1.258.955-1.345.762-2.391.728-2.43Zm3.314 11.733c-.048-.096-2.325-1.234-2.113-3.422.212-2.189 1.675-2.789 1.698-2.854.023-.065-.597-.79-1.254-1.157a3.692 3.692 0 0 0-1.563-.434c-.108-.003-.483-.095-1.254.116-.508.139-1.653.589-1.968.607-.316.018-1.256-.522-2.267-.665-.647-.125-1.333.131-1.824.328-.49.196-1.422.754-2.074 2.237-.652 1.482-.311 3.83-.067 4.56.244.729.625 1.924 1.273 2.796.576.984 1.34 1.667 1.659 1.899.319.232 1.219.386 1.843.067.502-.308 1.408-.485 1.766-.472.357.013 1.061.154 1.782.539.571.197 1.111.115 1.652-.105.541-.221 1.324-1.059 2.238-2.758.347-.79.505-1.217.473-1.282Z" />
+                      <path d="M11.182.008C11.148-.03 9.923.023 8.857 1.18c-1.066 1.156-.902 2.482-.878 2.516.024.034 1.52.087 2.475-1.258.955-1.345.762-2.391.728-2.43Zm3.314 11.733c-.048-.096-2.325-1.234-2.113-3.422.212-2.189 1.675-2.789 1.698-2.854.023-.065-.597-.79-1.254-1.157a3.692 3.692 0 0 0-1.563-.434c-.108-.003-.483-.095-1.254.116-.508.139-1.653.589-1.968.607-.316.018-1.256-.522-2.267-.665-.647-.125-1.333.131-1.824.328-.49.196-1.422.754-2.074 2.237-.652 1.482-.311 3.83-.067 4.56.244.729.625 1.924 1.273 2.796.576.984 1.34 1.667 1.659 1.899.319.232 1.219.386 1.843.067.502-.308 1.408-.485 1.766-.472.357.013 1.061.154 1.782.539.571.197 1.111.115 1.652-.105.541-.221 1.324-1.059 2.238-2.758.347-.79.505-1.217.473-1.282Z" />
+                    </svg>
+                    Iphone Apps
+                  </p>
+                </th>
+                <th>
+                  <p class="button3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40px" style="color: #6C20B9;" fill="currentColor" class="bi bi-file-earmark-text" viewBox="0 0 16 16">
+                      <path d="M5.5 7a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1h-5zM5 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5z" />
+                      <path d="M9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.5L9.5 0zm0 1v2A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5z" />
+                    </svg>
+                    Article Writing
+                  </p>
+                </th>
+
+                <th>
+                  <p class="button3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40px" style="color: #6C20B9;" fill="currentColor" class="bi bi-graph-up-arrow" viewBox="0 0 16 16">
+                      <path fill-rule="evenodd" d="M0 0h1v15h15v1H0V0Zm10 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V4.9l-3.613 4.417a.5.5 0 0 1-.74.037L7.06 6.767l-3.656 5.027a.5.5 0 0 1-.808-.588l4-5.5a.5.5 0 0 1 .758-.06l2.609 2.61L13.445 4H10.5a.5.5 0 0 1-.5-.5Z" />
+                    </svg>
+                    Finance
+                  </p>
+                </th>
+
+                <th>
+                  <p class="button3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40px" style="color: #6C20B9;" fill="currentColor" class="bi bi-calculator" viewBox="0 0 16 16">
+                      <path d="M12 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h8zM4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4z" />
+                      <path d="M4 2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-2zm0 4a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm3-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm3-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-4z" />
+                    </svg>
+                    Accounting
+                  </p>
+                </th>
+
+                <th>
+                  <p class="button3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40px" style="color: #6C20B9;" fill="currentColor" class="bi bi-globe2" viewBox="0 0 16 16">
+                      <path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm7.5-6.923c-.67.204-1.335.82-1.887 1.855-.143.268-.276.56-.395.872.705.157 1.472.257 2.282.287V1.077zM4.249 3.539c.142-.384.304-.744.481-1.078a6.7 6.7 0 0 1 .597-.933A7.01 7.01 0 0 0 3.051 3.05c.362.184.763.349 1.198.49zM3.509 7.5c.036-1.07.188-2.087.436-3.008a9.124 9.124 0 0 1-1.565-.667A6.964 6.964 0 0 0 1.018 7.5h2.49zm1.4-2.741a12.344 12.344 0 0 0-.4 2.741H7.5V5.091c-.91-.03-1.783-.145-2.591-.332zM8.5 5.09V7.5h2.99a12.342 12.342 0 0 0-.399-2.741c-.808.187-1.681.301-2.591.332zM4.51 8.5c.035.987.176 1.914.399 2.741A13.612 13.612 0 0 1 7.5 10.91V8.5H4.51zm3.99 0v2.409c.91.03 1.783.145 2.591.332.223-.827.364-1.754.4-2.741H8.5zm-3.282 3.696c.12.312.252.604.395.872.552 1.035 1.218 1.65 1.887 1.855V11.91c-.81.03-1.577.13-2.282.287zm.11 2.276a6.696 6.696 0 0 1-.598-.933 8.853 8.853 0 0 1-.481-1.079 8.38 8.38 0 0 0-1.198.49 7.01 7.01 0 0 0 2.276 1.522zm-1.383-2.964A13.36 13.36 0 0 1 3.508 8.5h-2.49a6.963 6.963 0 0 0 1.362 3.675c.47-.258.995-.482 1.565-.667zm6.728 2.964a7.009 7.009 0 0 0 2.275-1.521 8.376 8.376 0 0 0-1.197-.49 8.853 8.853 0 0 1-.481 1.078 6.688 6.688 0 0 1-.597.933zM8.5 11.909v3.014c.67-.204 1.335-.82 1.887-1.855.143-.268.276-.56.395-.872A12.63 12.63 0 0 0 8.5 11.91zm3.555-.401c.57.185 1.095.409 1.565.667A6.963 6.963 0 0 0 14.982 8.5h-2.49a13.36 13.36 0 0 1-.437 3.008zM14.982 7.5a6.963 6.963 0 0 0-1.362-3.675c-.47.258-.995.482-1.565.667.248.92.4 1.938.437 3.008h2.49zM11.27 2.461c.177.334.339.694.482 1.078a8.368 8.368 0 0 0 1.196-.49 7.01 7.01 0 0 0-2.275-1.52c.218.283.418.597.597.932zm-.488 1.343a7.765 7.765 0 0 0-.395-.872C9.835 1.897 9.17 1.282 8.5 1.077V4.09c.81-.03 1.577-.13 2.282-.287z" />
+                    </svg>
+                    Internet Marketing
+                  </p>
+                </th>
+              </tr>
+
+              <tr>
+                <th>
+                  <p class="button3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40px" style="color: #6C20B9;" fill="currentColor" class="bi bi-laptop" viewBox="0 0 16 16">
+                      <path d="M13.5 3a.5.5 0 0 1 .5.5V11H2V3.5a.5.5 0 0 1 .5-.5h11zm-11-1A1.5 1.5 0 0 0 1 3.5V12h14V3.5A1.5 1.5 0 0 0 13.5 2h-11zM0 12.5h16a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 12.5z" />
+                    </svg>
+                    Software Architecture
+                  </p>
+                </th>
+
+                <th>
+                  <p class="button3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40px" style="color: #6C20B9;" fill="currentColor" class="bi bi-display" viewBox="0 0 16 16">
+                      <path d="M0 4s0-2 2-2h12s2 0 2 2v6s0 2-2 2h-4c0 .667.083 1.167.25 1.5H11a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1h.75c.167-.333.25-.833.25-1.5H2s-2 0-2-2V4zm1.398-.855a.758.758 0 0 0-.254.302A1.46 1.46 0 0 0 1 4.01V10c0 .325.078.502.145.602.07.105.17.188.302.254a1.464 1.464 0 0 0 .538.143L2.01 11H14c.325 0 .502-.078.602-.145a.758.758 0 0 0 .254-.302 1.464 1.464 0 0 0 .143-.538L15 9.99V4c0-.325-.078-.502-.145-.602a.757.757 0 0 0-.302-.254A1.46 1.46 0 0 0 13.99 3H2c-.325 0-.502.078-.602.145z" />
+                    </svg>
+                    Web Scraping
+                  </p>
+                </th>
+
+                <th>
+                  <p class="button3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40px" style="color: #6C20B9;" fill="currentColor" class="bi bi-shield-check" viewBox="0 0 16 16">
+                      <path d="M5.338 1.59a61.44 61.44 0 0 0-2.837.856.481.481 0 0 0-.328.39c-.554 4.157.726 7.19 2.253 9.188a10.725 10.725 0 0 0 2.287 2.233c.346.244.652.42.893.533.12.057.218.095.293.118a.55.55 0 0 0 .101.025.615.615 0 0 0 .1-.025c.076-.023.174-.061.294-.118.24-.113.547-.29.893-.533a10.726 10.726 0 0 0 2.287-2.233c1.527-1.997 2.807-5.031 2.253-9.188a.48.48 0 0 0-.328-.39c-.651-.213-1.75-.56-2.837-.855C9.552 1.29 8.531 1.067 8 1.067c-.53 0-1.552.223-2.662.524zM5.072.56C6.157.265 7.31 0 8 0s1.843.265 2.928.56c1.11.3 2.229.655 2.887.87a1.54 1.54 0 0 1 1.044 1.262c.596 4.477-.787 7.795-2.465 9.99a11.775 11.775 0 0 1-2.517 2.453 7.159 7.159 0 0 1-1.048.625c-.28.132-.581.24-.829.24s-.548-.108-.829-.24a7.158 7.158 0 0 1-1.048-.625 11.777 11.777 0 0 1-2.517-2.453C1.928 10.487.545 7.169 1.141 2.692A1.54 1.54 0 0 1 2.185 1.43 62.456 62.456 0 0 1 5.072.56z" />
+                      <path d="M10.854 5.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 7.793l2.646-2.647a.5.5 0 0 1 .708 0z" />
+                    </svg>
+                    Legal
+                  </p>
+                </th>
+
+                <th>
+                  <p class="button3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40px" style="color: #6C20B9;" fill="currentColor" class="bi bi-filetype-sql" viewBox="0 0 16 16">
+                      <path fill-rule="evenodd" d="M14 4.5V14a2 2 0 0 1-2 2v-1a1 1 0 0 0 1-1V4.5h-2A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v9H2V2a2 2 0 0 1 2-2h5.5L14 4.5ZM0 14.841a1.129 1.129 0 0 0 .401.823c.13.108.288.192.478.252s.411.091.665.091c.338 0 .624-.053.858-.158.237-.106.416-.252.54-.44a1.17 1.17 0 0 0 .187-.656c0-.224-.045-.41-.135-.56a1 1 0 0 0-.375-.357 2.027 2.027 0 0 0-.565-.21l-.621-.144a.97.97 0 0 1-.405-.176.369.369 0 0 1-.143-.299c0-.156.061-.284.184-.384.125-.101.296-.152.513-.152.143 0 .266.022.37.068a.624.624 0 0 1 .245.181.56.56 0 0 1 .12.258h.75a1.092 1.092 0 0 0-.199-.566 1.21 1.21 0 0 0-.5-.41 1.813 1.813 0 0 0-.78-.152c-.293 0-.552.05-.776.15-.225.099-.4.24-.528.421-.127.182-.19.395-.19.639 0 .201.04.376.123.524.082.149.199.27.351.367.153.095.332.167.54.213l.618.144c.207.049.36.113.462.193a.387.387 0 0 1 .153.325c0 .11-.029.207-.085.29A.558.558 0 0 1 2 15.31c-.111.047-.249.07-.413.07-.117 0-.224-.013-.32-.04a.835.835 0 0 1-.248-.115.579.579 0 0 1-.255-.384H0Zm6.878 1.489-.507-.739c.176-.162.31-.362.401-.6.092-.239.138-.507.138-.806v-.501c0-.371-.07-.693-.208-.967a1.495 1.495 0 0 0-.589-.636c-.256-.15-.561-.225-.917-.225-.351 0-.656.075-.914.225-.256.149-.453.36-.592.636a2.138 2.138 0 0 0-.205.967v.5c0 .37.069.691.205.965.139.273.336.485.592.636a1.8 1.8 0 0 0 .914.222 1.8 1.8 0 0 0 .6-.1l.294.422h.788ZM4.262 14.2v-.522c0-.246.038-.456.114-.63a.91.91 0 0 1 .325-.398.885.885 0 0 1 .495-.138c.192 0 .357.046.495.138a.88.88 0 0 1 .325.398c.077.174.115.384.115.63v.522c0 .164-.018.312-.053.445-.035.13-.087.244-.155.34l-.106-.14-.105-.147h-.733l.451.65a.638.638 0 0 1-.251.047.872.872 0 0 1-.487-.147.916.916 0 0 1-.32-.404 1.67 1.67 0 0 1-.11-.644Zm3.986 1.057h1.696v.674H7.457v-3.999h.79v3.325Z" />
+                    </svg>
+                    MySQL
+                  </p>
+                </th>
+
+                <th>
+                  <p class="button3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40px" style="color: #6C20B9;" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
+                      <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                    </svg>
+                    eCommerce
+                  </p>
+                </th>
+
+              </tr>
+              <tr>
+                <th>
+                  <p class="button3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40px" style="color: #6C20B9;" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
+                      <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z" />
+                    </svg>
+                    Graphic Design
+                  </p>
+                </th>
+
+                <th>
+                  <p class="button3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40px" style="color: #6C20B9;" fill="currentColor" class="bi bi-filetype-html" viewBox="0 0 16 16">
+                      <path fill-rule="evenodd" d="M14 4.5V11h-1V4.5h-2A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v9H2V2a2 2 0 0 1 2-2h5.5L14 4.5Zm-9.736 7.35v3.999h-.791v-1.714H1.79v1.714H1V11.85h.791v1.626h1.682V11.85h.79Zm2.251.662v3.337h-.794v-3.337H4.588v-.662h3.064v.662H6.515Zm2.176 3.337v-2.66h.038l.952 2.159h.516l.946-2.16h.038v2.661h.715V11.85h-.8l-1.14 2.596H9.93L8.79 11.85h-.805v3.999h.706Zm4.71-.674h1.696v.674H12.61V11.85h.79v3.325Z" />
+                    </svg>
+                    HTML
+                  </p>
+                </th>
+
+                <th>
+                  <p class="button3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40px" style="color: #6C20B9;" fill="currentColor" class="bi bi-ubuntu" viewBox="0 0 16 16">
+                      <path d="M2.273 9.53a2.273 2.273 0 1 0 0-4.546 2.273 2.273 0 0 0 0 4.547Zm9.467-4.984a2.273 2.273 0 1 0 0-4.546 2.273 2.273 0 0 0 0 4.546ZM7.4 13.108a5.535 5.535 0 0 1-3.775-2.88 3.273 3.273 0 0 1-1.944.24 7.4 7.4 0 0 0 5.328 4.465c.53.113 1.072.169 1.614.166a3.253 3.253 0 0 1-.666-1.9 5.639 5.639 0 0 1-.557-.091Zm3.828 2.285a2.273 2.273 0 1 0 0-4.546 2.273 2.273 0 0 0 0 4.546Zm3.163-3.108a7.436 7.436 0 0 0 .373-8.726 3.276 3.276 0 0 1-1.278 1.498 5.573 5.573 0 0 1-.183 5.535 3.26 3.26 0 0 1 1.088 1.693ZM2.098 3.998a3.28 3.28 0 0 1 1.897.486 5.544 5.544 0 0 1 4.464-2.388c.037-.67.277-1.313.69-1.843a7.472 7.472 0 0 0-7.051 3.745Z" />
+                    </svg>
+                    Linux
+                  </p>
+                </th>
+
+                <th>
+                  <p class="button3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40px" style="color: #6C20B9;" fill="currentColor" class="bi bi-flag-fill" viewBox="0 0 16 16">
+                      <path d="M14.778.085A.5.5 0 0 1 15 .5V8a.5.5 0 0 1-.314.464L14.5 8l.186.464-.003.001-.006.003-.023.009a12.435 12.435 0 0 1-.397.15c-.264.095-.631.223-1.047.35-.816.252-1.879.523-2.71.523-.847 0-1.548-.28-2.158-.525l-.028-.01C7.68 8.71 7.14 8.5 6.5 8.5c-.7 0-1.638.23-2.437.477A19.626 19.626 0 0 0 3 9.342V15.5a.5.5 0 0 1-1 0V.5a.5.5 0 0 1 1 0v.282c.226-.079.496-.17.79-.26C4.606.272 5.67 0 6.5 0c.84 0 1.524.277 2.121.519l.043.018C9.286.788 9.828 1 10.5 1c.7 0 1.638-.23 2.437-.477a19.587 19.587 0 0 0 1.349-.476l.019-.007.004-.002h.001" />
+                    </svg>
+                    Banner Design
+                  </p>
+                </th>
+                <th>
+                  <p class="button3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40px" style="color: #6C20B9;" fill="currentColor" class="bi bi-keyboard" viewBox="0 0 16 16">
+                      <path d="M14 5a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h12zM2 4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2H2z" />
+                      <path d="M13 10.25a.25.25 0 0 1 .25-.25h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5a.25.25 0 0 1-.25-.25v-.5zm0-2a.25.25 0 0 1 .25-.25h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5a.25.25 0 0 1-.25-.25v-.5zm-5 0A.25.25 0 0 1 8.25 8h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5A.25.25 0 0 1 8 8.75v-.5zm2 0a.25.25 0 0 1 .25-.25h1.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-1.5a.25.25 0 0 1-.25-.25v-.5zm1 2a.25.25 0 0 1 .25-.25h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5a.25.25 0 0 1-.25-.25v-.5zm-5-2A.25.25 0 0 1 6.25 8h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5A.25.25 0 0 1 6 8.75v-.5zm-2 0A.25.25 0 0 1 4.25 8h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5A.25.25 0 0 1 4 8.75v-.5zm-2 0A.25.25 0 0 1 2.25 8h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5A.25.25 0 0 1 2 8.75v-.5zm11-2a.25.25 0 0 1 .25-.25h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5a.25.25 0 0 1-.25-.25v-.5zm-2 0a.25.25 0 0 1 .25-.25h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5a.25.25 0 0 1-.25-.25v-.5zm-2 0A.25.25 0 0 1 9.25 6h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5A.25.25 0 0 1 9 6.75v-.5zm-2 0A.25.25 0 0 1 7.25 6h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5A.25.25 0 0 1 7 6.75v-.5zm-2 0A.25.25 0 0 1 5.25 6h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5A.25.25 0 0 1 5 6.75v-.5zm-3 0A.25.25 0 0 1 2.25 6h1.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-1.5A.25.25 0 0 1 2 6.75v-.5zm0 4a.25.25 0 0 1 .25-.25h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5a.25.25 0 0 1-.25-.25v-.5zm2 0a.25.25 0 0 1 .25-.25h5.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-5.5a.25.25 0 0 1-.25-.25v-.5z" />
+                    </svg>
+                    Data Entry
+                  </p>
+                </th>
+              </tr>
+              <tr>
+                <th>
+                  <p class="button3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40px" style="color: #6C20B9;" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+                      <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                    </svg>
+                    Logo Design
+                  </p>
+                </th>
+                <th>
+                  <p class="button3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40px" style="color: #6C20B9;" fill="currentColor" class="bi bi-filetype-css" viewBox="0 0 16 16">
+                      <path fill-rule="evenodd" d="M14 4.5V14a2 2 0 0 1-2 2h-1v-1h1a1 1 0 0 0 1-1V4.5h-2A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v9H2V2a2 2 0 0 1 2-2h5.5L14 4.5ZM3.397 14.841a1.13 1.13 0 0 0 .401.823c.13.108.289.192.478.252.19.061.411.091.665.091.338 0 .624-.053.859-.158.236-.105.416-.252.539-.44.125-.189.187-.408.187-.656 0-.224-.045-.41-.134-.56a1.001 1.001 0 0 0-.375-.357 2.027 2.027 0 0 0-.566-.21l-.621-.144a.97.97 0 0 1-.404-.176.37.37 0 0 1-.144-.299c0-.156.062-.284.185-.384.125-.101.296-.152.512-.152.143 0 .266.023.37.068a.624.624 0 0 1 .246.181.56.56 0 0 1 .12.258h.75a1.092 1.092 0 0 0-.2-.566 1.21 1.21 0 0 0-.5-.41 1.813 1.813 0 0 0-.78-.152c-.293 0-.551.05-.776.15-.225.099-.4.24-.527.421-.127.182-.19.395-.19.639 0 .201.04.376.122.524.082.149.2.27.352.367.152.095.332.167.539.213l.618.144c.207.049.361.113.463.193a.387.387 0 0 1 .152.326.505.505 0 0 1-.085.29.559.559 0 0 1-.255.193c-.111.047-.249.07-.413.07-.117 0-.223-.013-.32-.04a.838.838 0 0 1-.248-.115.578.578 0 0 1-.255-.384h-.765ZM.806 13.693c0-.248.034-.46.102-.633a.868.868 0 0 1 .302-.399.814.814 0 0 1 .475-.137c.15 0 .283.032.398.097a.7.7 0 0 1 .272.26.85.85 0 0 1 .12.381h.765v-.072a1.33 1.33 0 0 0-.466-.964 1.441 1.441 0 0 0-.489-.272 1.838 1.838 0 0 0-.606-.097c-.356 0-.66.074-.911.223-.25.148-.44.359-.572.632-.13.274-.196.6-.196.979v.498c0 .379.064.704.193.976.131.271.322.48.572.626.25.145.554.217.914.217.293 0 .554-.055.785-.164.23-.11.414-.26.55-.454a1.27 1.27 0 0 0 .226-.674v-.076h-.764a.799.799 0 0 1-.118.363.7.7 0 0 1-.272.25.874.874 0 0 1-.401.087.845.845 0 0 1-.478-.132.833.833 0 0 1-.299-.392 1.699 1.699 0 0 1-.102-.627v-.495ZM6.78 15.29a1.176 1.176 0 0 1-.111-.449h.764a.578.578 0 0 0 .255.384c.07.049.154.087.25.114.095.028.201.041.319.041.164 0 .301-.023.413-.07a.559.559 0 0 0 .255-.193.507.507 0 0 0 .085-.29.387.387 0 0 0-.153-.326c-.101-.08-.256-.144-.463-.193l-.618-.143a1.72 1.72 0 0 1-.539-.214 1 1 0 0 1-.351-.367 1.068 1.068 0 0 1-.123-.524c0-.244.063-.457.19-.639.127-.181.303-.322.527-.422.225-.1.484-.149.777-.149.304 0 .564.05.779.152.217.102.384.239.5.41.12.17.187.359.2.566h-.75a.56.56 0 0 0-.12-.258.624.624 0 0 0-.246-.181.923.923 0 0 0-.37-.068c-.216 0-.387.05-.512.152a.472.472 0 0 0-.184.384c0 .121.047.22.143.3a.97.97 0 0 0 .404.175l.621.143c.217.05.406.12.566.211.16.09.285.21.375.358.09.148.135.335.135.56 0 .247-.063.466-.188.656a1.216 1.216 0 0 1-.539.439c-.234.105-.52.158-.858.158-.254 0-.476-.03-.665-.09a1.404 1.404 0 0 1-.478-.252 1.13 1.13 0 0 1-.29-.375Z" />
+                    </svg>
+                    CSS
+                  </p>
+                </th>
+                <th>
+                  <p class="button3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40px" style="color: #6C20B9;" fill="currentColor" class="bi bi-house-door-fill" viewBox="0 0 16 16">
+                      <path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5z" />
+                    </svg>
+                    Manufacturing
+                  </p>
+                </th>
+                <th>
+                  <p class="button3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40px" style="color: #6C20B9;" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                      <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                      <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+                    </svg>
+                    Illustration
+                  </p>
+                </th>
+                <th>
+                  <p class="button3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40px" style="color: #6C20B9;" fill="currentColor" class="bi bi-link-45deg" viewBox="0 0 16 16">
+                      <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z" />
+                      <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z" />
+                    </svg>
+                    Link Building
+                  </p>
+                </th>
+              </tr>
+
+
+
+            </table>
+            <br><br><br>
+
+          </div>
+
+  </section>
+  <section class="freelancer">
+    <table class="center">
+      <th class="section1">
+        <h1>Freelancer API.</h1>
+        <h2>50 million professionals on demand</h2>
+        <p class=" ">Why hire people when you can simply integrate our talented cloud workforce instead?</p>
+        <p class="button8"><span></span>View Documentation</p>
+      </th>
+      <th class="section2">
+        <h1>Freelancer Enterprise.</h1>
+        <h2>Company budget? Get more done for less</h2>
+        <p class="text-left">Use our workforce of 50 million to help your business achieve more.</p>
+        <p class="button4"><span></span>Contact Us</p>
+      </th>
+    </table>
+    <br><br><br>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-3 col-md-2">
+          <a href="/index">
+            <h4 style="color: white;">maalf</h4>
+          </a>
+          <br>
+          <ul class="footer-links">
+            <li>
+              <span style="cursor:text"><svg width="25px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fit="" preserveAspectRatio="xMidYMid meet" focusable="false">
+                  <g stroke="none" stroke-width="1" fill-rule="evenodd" style="fill: white">
+                    <polygon fill="none" opacity="0" points="2 2 22 2 22 22 2 22"></polygon>
+                    <path d="M11.99,2 C6.47,2 2,6.48 2,12 C2,17.52 6.47,22 11.99,22 C17.52,22 22,17.52 22,12 C22,6.48 17.52,2 11.99,2 Z M18.92,8 L15.97,8 C15.65,6.75 15.19,5.55 14.59,4.44 C16.43,5.07 17.96,6.35 18.92,8 Z M12,4.04 C12.83,5.24 13.48,6.57 13.91,8 L10.09,8 C10.52,6.57 11.17,5.24 12,4.04 Z M4.26,14 C4.1,13.36 4,12.69 4,12 C4,11.31 4.1,10.64 4.26,10 L7.64,10 C7.56,10.66 7.5,11.32 7.5,12 C7.5,12.68 7.56,13.34 7.64,14 L4.26,14 Z M5.08,16 L8.03,16 C8.35,17.25 8.81,18.45 9.41,19.56 C7.57,18.93 6.04,17.66 5.08,16 Z M8.03,8 L5.08,8 C6.04,6.34 7.57,5.07 9.41,4.44 C8.81,5.55 8.35,6.75 8.03,8 Z M12,19.96 C11.17,18.76 10.52,17.43 10.09,16 L13.91,16 C13.48,17.43 12.83,18.76 12,19.96 Z M14.34,14 L9.66,14 C9.57,13.34 9.5,12.68 9.5,12 C9.5,11.32 9.57,10.65 9.66,10 L14.34,10 C14.43,10.65 14.5,11.32 14.5,12 C14.5,12.68 14.43,13.34 14.34,14 Z M14.59,19.56 C15.19,18.45 15.65,17.25 15.97,16 L18.92,16 C17.96,17.65 16.43,18.93 14.59,19.56 Z M16.36,14 C16.44,13.34 16.5,12.68 16.5,12 C16.5,11.32 16.44,10.66 16.36,10 L19.74,10 C19.9,10.64 20,11.31 20,12 C20,12.69 19.9,13.36 19.74,14 L16.36,14 Z"></path>
+                  </g>
+                </svg>
+                <a>Us (International) / </a></span>
+              <a class="englishsec">English</a>
+
+
+              <br><br>
+            </li>
+            <li>
+              <span style="cursor:text"> <svg width="25px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fit="" preserveAspectRatio="xMidYMid meet" focusable="false">
+                  <g stroke="none" stroke-width="1" fill-rule="evenodd" style="fill: white">
+                    <polygon fill="none" opacity="0" points="2 2 22 2 22 22 2 22"></polygon>
+                    <path d="M12,2 C6.486,2 2,6.487 2,12 C2,17.515 6.486,22 12,22 C17.514,22 22,17.515 22,12 C22,6.487 17.514,2 12,2 Z M12,18.25 C11.31,18.25 10.75,17.69 10.75,17 C10.75,16.31 11.31,15.75 12,15.75 C12.69,15.75 13.25,16.31 13.25,17 C13.25,17.69 12.69,18.25 12,18.25 Z M13,13.875 L13,15 L11,15 L11,12 L12,12 C13.104,12 14,11.103 14,10 C14,8.896 13.104,8 12,8 C10.896,8 10,8.896 10,10 L8,10 C8,7.795 9.795,6 12,6 C14.205,6 16,7.795 16,10 C16,11.86 14.723,13.43 13,13.875 Z"></path>
+                  </g>
+                </svg>
+                <a>Help & Support</a></span><br>
+            </li>
+          </ul>
+        </div>
+        <div class="col-xs-2 col-md-2">
+          <h6>Freelancer</h6>
+          <ul class="footer-links">
+            <li><a>Categoris</a></li>
+            <li><a>Projects</a></li>
+            <li><a>Contests</a></li>
+            <li><a>Freelancers</a></li>
+            <li><a>Enterprise</a></li>
+            <li><a>Membership</a></li>
+            <li><a>Preffered Freelancer Program</a></li>
+            <li><a>Project Management</a></li>
+            <li><a>Local Jobs</a></li>
+            <li><a>Photo Anywhere</a></li>
+            <li><a>Showcase</a></li>
+            <li><a>API for Developers</a></li>
+            <li><a>Get Verified</a></li>
+          </ul>
+        </div>
+
+        <div class="col-xs-2 col-md-2">
+          <h6>About</h6>
+          <ul class="footer-links">
+            <li><a>About Us</a></li>
+            <li><a>How it Works</a></li>
+            <li><a>Careers</a></li>
+            <li><a>Security</a></li>
+            <li><a>Investor</a></li>
+            <li><a>Sitemap</a></li>
+            <li><a>Stories</a></li>
+            <li><a>News</a></li>
+          </ul>
+        </div>
+
+        <div class="col-xs-2 col-md-2">
+          <h6>Terms</h6>
+          <ul class="footer-links">
+            <li><a>Privacy Policy</a></li>
+            <li><a>Terms and Conditions</a></li>
+            <li><a>Copyright Policy</a></li>
+            <li><a>Code of Conduct</a></li>
+            <li><a>Fees and Charges</a></li>
+          </ul>
+        </div>
+
+        <div class="col-xs-2 col-md-2">
+          <h6>Partners</h6>
+          <ul class="footer-links">
+            <li><a>Escrow.com</a></li>
+            <li><a>Loadshift</a></li>
+            <li><a>Freightlancer</a></li>
+            <li><a>Warrior Forum</a></li>
+          </ul>
+        </div>
+
+        <div class="col-xs-2 col-md-2">
+          <h6>Apps</h6>
+          <ul class="footer-links1">
+            <li><a href="https://www.apple.com/app-store/"><span style="cursor:pointer"><img src="https://www.f-cdn.com/assets/main/en/assets/footer/app-store.svg"></span></a><br></li>
+            <li class="pt-4"> <a href="https://googleplay.com"><span style="cursor:pointer"><img src="https://www.f-cdn.com/assets/main/en/assets/footer/google-play.svg"></span></a><br></li>
+            <li class="sosmed">
+              <a href="https://facebook.com"><span style="cursor:pointer"><svg class="mx-2" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white" class="bi bi-facebook " viewBox="0 0 16 16">
+                    <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z" />
+                  </svg></span></a>
+              <a href="https://twitter.com"><span style="cursor:pointer"><svg class="mx-2" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white" class="bi bi-twitter" viewBox="0 0 16 16">
+                    <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z" />
+                  </svg></span></a>
+              <a href="https://youtube.com"><span style="cursor:pointer"><svg class="mx-2" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white" class="bi bi-youtube" viewBox="0 0 16 16">
+                    <path d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.007 2.007 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.007 2.007 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31.4 31.4 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.007 2.007 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A99.788 99.788 0 0 1 7.858 2h.193zM6.4 5.209v4.818l4.157-2.408L6.4 5.209z" />
+                  </svg></span></a>
+              <a href="https://instagram.com"><span style="cursor:pointer"><svg class="mx-2" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white" class="bi bi-instagram" viewBox="0 0 16 16">
+                    <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z" />
+                  </svg></span></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+  </footer>
+
+
+</body>

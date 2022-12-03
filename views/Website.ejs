@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+
+<head>
+  <link rel="stylesheet" type="text/css" href="assets/style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/feather-icons"></script>
+  <title>MAALF</title>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light py-1 fixed-top" style="background-color: #e3f2fd;">
+    <a class="navbar-brand" href="index.html">
+      <h2>maalf</h2>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#asd" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="asd">
+      <ul class="navbar-nav mr-auto mt-3">
+        <li class="nav-item">
+          <p class="nav-link1">How It Works</p>
+        </li>
+        <li class="nav-item">
+          <p class="nav-link1">Browse Jobs</p>
+        </li>
+        <div class="dropdown-divider"></div>
+      </ul>
+      <form class="form-inline my-2 my-lg-0 ">
+        <a href="LogIn.html"><button class="btn btn-sm col-xs-2 margin-left" type="button">
+            <b>Login</b>
+          </button></a>
+        <a href="SignUp.html"><button class="btn btn-sm col-xs-2 margin-left" type="button">
+            <b>Sign up</b>
+          </button></a>
+        <a href="PostAProject.html"><button type="button" id="btn1" class="btn btn-sm col-xs-2 margin-left">
+            <b>Post a Project</b>
+          </button></a>
+      </form>
+    </div>
+  </nav>
+  <nav class="navbar navbar-expand-lg navbar-light bg-dark" id="navbar2">
+    <button class="navbar-toggler ml-auto hidden-sm-up float-xs-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Find Jobs</a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <li class="dropdown-submenu">
+              <a class="dropdown-item dropdown-toggle" href="http://google.com">By Skill</a>
+              <ul class="dropdown-menu">
+                <li class="dropdown-submenu">
+                  <a class="dropdown-item dropdown-toggle" href="#">Find Graphic Design Jobs</a>
+                  <ul class="dropdown-menu">
+                    <li>
+                      <a class="dropdown-item" href="#">Find Logo Design Jobs</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="#">Find Web Design Jobs</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="#">Find Banner Design Jobs</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="#">Find Illustration Jobs</a>
+                    </li>
+                  </ul>
+                </li>
+                <li class="dropdown-submenu">
+                  <a class="dropdown-item dropdown-toggle" href="#">Find Writing Jobs</a>
+                  <ul class="dropdown-menu">
+                    <li>
+                      <a class="dropdown-item" href="#">Find Copywriting Jobs</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="#">Find Ghostwriting Jobs</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="#">Find Other Writing Jobs</a>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#">Find Legal Jobs</a>
+                </li>
+              </ul>
+            <li class="dropdown-submenu">
+              <a class="dropdown-item dropdown-toggle" href="http://google.com">By Language</a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" href="#">Find Freelance Job in English</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#">Find Freelance Job in Spanish</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#">Find Freelance Job in French</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#">Find Freelance Job in Chinese</a>
+                </li>
+              </ul>
+            </li>
+            <ul class="dropdown-menu"></ul>
+            <li>
+              <a class="dropdown-item" href="#">Featured Jobs</a>
+            </li>
+        </li>
+      </ul>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Hire Freelancer</a>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <li class="dropdown-submenu">
+            <a class="dropdown-item dropdown-toggle" href="http://google.com">By Skill</a>
+            <ul class="dropdown-menu">
+              <li class="dropdown-submenu">
+                <a class="dropdown-item dropdown-toggle" href="#">Hire Graphic Designers</a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a class="dropdown-item" href="#">Hire Photoshop Designers</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#">Hire 3D Animators</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#">Hire Packaging Designers</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#">FHire Fashion Designers</a>
+                  </li>
+                </ul>
+              </li>
+              <li class="dropdown-submenu">
+                <a class="dropdown-item dropdown-toggle" href="#">Hire Software Developers</a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a class="dropdown-item" href="#">Hire C++ Software Developers</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#">Hire Linux Software Developers</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#">Hire Database Software Developers</a>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a class="dropdown-item" href="#">Hire Lawyers</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="#">Hire Seo Specialist</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="#">Hire Data Entry Clerks</a>
+              </li>
+            </ul>
+          <li class="dropdown-submenu">
+            <a class="dropdown-item dropdown-toggle" href="http://google.com">By Location</a>
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item" href="#">Hire Freelancers in Canada</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="#">Hire Freelancers in Bangladesh</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="#">Hire Freelancers in Turkey</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="#">Hire Freelancers in the United Kingdom</a>
+              </li>
+            </ul>
+          </li>
+          <ul class="dropdown-menu"></ul>
+          <li>
+            <a class="dropdown-item" href="#">Skill Categories</a>
+          </li>
+      </li>
+      </ul>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Get Ideas</a>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <ul class="dropdown-menu"></ul>
+          <li>
+            <a class="dropdown-item" href="#">Get Web Design Ideas</a>
+          </li>
+          <li>
+            <a class="dropdown-item" href="#">Get Wordpress Ideas</a>
+          </li>
+          <li>
+            <a class="dropdown-item" href="#">Get Illustration Ideas</a>
+          </li>
+          <li>
+            <a class="dropdown-item" href="#">Get Product Design Ideas</a>
+          </li>
+          <li>
+            <a class="dropdown-item" href="#">Get Branding Ideas</a>
+          </li>
+        </ul>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">About</a>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <ul class="dropdown-menu"></ul>
+          <li>
+            <a class="dropdown-item" href="#">Enterprise</a>
+          </li>
+          <li>
+            <a class="dropdown-item" href="#">Membership</a>
+          </li>
+          <li>
+            <a class="dropdown-item" href="#">Preferred Freelancer Program</a>
+          </li>
+          <li>
+            <a class="dropdown-item" href="#">Get Verified</a>
+          </li>
+        </ul>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Resources</a>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <ul class="dropdown-menu"></ul>
+          <li>
+            <a class="dropdown-item" href="#">What is Adobe Photoshop</a>
+          </li>
+          <li>
+            <a class="dropdown-item" href="#">What is HTML</a>
+          </li>
+          <li>
+            <a class="dropdown-item" href="#">What is Internet Marketing</a>
+          </li>
+          <li>
+            <a class="dropdown-item" href="#">What is PHP</a>
+          </li>
+          <li>
+            <a class="dropdown-item" href="#">What is Web Design</a>
+          </li>
+        </ul>
+      </li>
+      </ul>
+      </li>
+      </ul>
+      </li>
+      </ul>
+    </div>
+  </nav>
+
+
+  </section>
+
+  <section style="background: linear-gradient(180deg, #F5E359 12.2%, white 12.2%)" class="needjob1">
+    <div class="container">
+      <div class="content">
+        <div class="textBox">
+          <h2>Make it real</h2>
+          <h2>with Freelancer</h2>
+          <h4>Find inspiration for your next big idea</h4>
+        </div>
+        <div class="imgBox">
+          <img src="https://cdn3.f-cdn.com/files/download/119992676/web_f5e459.jpg">
+        </div>
+      </div>
+
+      <div class="container2">
+        <br><br>
+        <h1 class="mt-3">Handpicked website design ideas for you</h1>
+        <a>Featured work from our best freelancers</a>
+        <div class="row mb-4">
+          <div class="col-sm mx-0 px-2 py-3  ">
+            <div class="img-hover-zoom">
+              <img src="https://cdn6.f-cdn.com/files/download/119753942/8d9bce.jpg" width="285">
+            </div>
+          </div>
+          <div class="col-sm mx-0 px-2 py-3  ">
+            <div class="img-hover-zoom">
+              <img src="https://cdn5.f-cdn.com/files/download/82372276/1ce7d2.jpg" width="295" alt="This zooms-in really well and smooth">
+            </div>
+          </div>
+          <div class="col-sm mx-0 px-2 py-3  ">
+            <div class="img-hover-zoom">
+              <img src="https://cdn6.f-cdn.com/files/download/76084549/14edcb.jpg" width="380" alt="This zooms-in really well and smooth">
+            </div>
+          </div>
+          <div class="col-sm mx-0 px-2 py-3  ">
+            <div class="img-hover-zoom">
+              <img src="https://cdn6.f-cdn.com/files/download/117057330/372149.jpg" width="285" alt="This zooms-in really well and smooth">
+            </div>
+          </div>
+          <div class="col-sm mx-0 px-2 py-3  ">
+            <div class="img-hover-zoom">
+              <img src="https://cdn2.f-cdn.com/files/download/117057797/4857b9.jpg" width="285" alt="This zooms-in really well and smooth">
+            </div>
+          </div>
+          <div class="col-sm mx-0 px-2 py-3  ">
+            <div class="img-hover-zoom">
+              <img src="https://cdn5.f-cdn.com/files/download/115809211/0408f3.jpg" width="285" alt="This zooms-in really well and smooth">
+            </div>
+          </div>
+          <div class="col-sm mx-0 px-2 py-3  ">
+            <div class="img-hover-zoom">
+              <img src="https://cdn3.f-cdn.com/files/download/115809537/5d390b.jpg" width="285">
+            </div>
+          </div>
+          <div class="col-sm mx-0 px-2 py-3  ">
+            <div class="img-hover-zoom">
+              <img src="https://cdn2.f-cdn.com/files/download/115809450/6ed9ae.jpg" width="285" alt="This zooms-in really well and smooth">
+            </div>
+          </div>
+          <div class="col-sm mx-0 px-2 py-3  ">
+            <div class="img-hover-zoom">
+              <img src="https://cdn2.f-cdn.com/files/download/117054229/13b3aa.jpg" width="285" alt="This zooms-in really well and smooth">
+            </div>
+          </div>
+          <div class="col-sm mx-0 px-2 py-3  ">
+            <div class="img-hover-zoom">
+              <img src="https://cdn6.f-cdn.com/files/download/124087659/d740a0.jpg" width="285" alt="This zooms-in really well and smooth">
+            </div>
+          </div>
+          <div class="col-sm mx-0 px-2 py-3  ">
+            <div class="img-hover-zoom">
+              <img src="https://cdn6.f-cdn.com/files/download/156669592/8da161.jpg" width="285" alt="This zooms-in really well and smooth">
+            </div>
+          </div>
+          <div class="col-sm mx-0 px-2 py-3  ">
+            <div class="img-hover-zoom">
+              <img src="https://cdn2.f-cdn.com/files/download/119752163/bef532.jpg" width="285" alt="This zooms-in really well and smooth">
+            </div>
+          </div>
+          <div class="col-sm mx-0 px-2 py-3  ">
+            <div class="img-hover-zoom">
+              <img src="https://cdn3.f-cdn.com/files/download/117055425/2da289.jpg" width="285" alt="This zooms-in really well and smooth">
+            </div>
+          </div>
+          <div class="col-sm mx-0 px-2 py-3  ">
+            <div class="img-hover-zoom">
+              <img src="https://cdn5.f-cdn.com/files/download/115809068/f5c8bb.jpg" width="285" alt="This zooms-in really well and smooth">
+            </div>
+          </div>
+          <div class="col-sm mx-0 px-2 py-3  ">
+            <div class="img-hover-zoom">
+              <img src="https://cdn3.f-cdn.com/files/download/119750464/c9acc9.jpg" width="285">
+            </div>
+          </div>
+          <div class="col-sm mx-0 px-2 py-3  ">
+            <div class="img-hover-zoom">
+              <img src="https://cdn5.f-cdn.com/files/download/99098294/bb100c.jpg" width="285">
+            </div>
+          </div>
+        </div>
+        <hr> <br>
+        <h2 style="font-size: 40px">Earn money freelancing</h2>
+        <a style="font-size: 30px">Latest website design projects</a>
+        <link rel="stylesheet" href="https://allyoucan.cloud/cdn/icofont/1.0.1/icofont.css" integrity="sha384-jbCTJB16Q17718YM9U22iJkhuGbS0Gd2LjaWb4YJEZToOPmnKDjySVa323U+W7Fv" crossorigin="anonymous">
+        <div class="container">
+          <div class="col-md-12">
+            <div class="bg-white rounded shadow-sm p-4 mb-4 restaurant-detailed-ratings-and-reviews">
+              <h5 class="mb-1">All Ratings and Reviews</h5>
+              <div class="reviews-members pt-4 pb-4">
+                <div class="media">
+                  <a href="#">
+                    <img alt="Generic placeholder image" src="http://bootdey.com/img/Content/avatar/avatar1.png" class="mr-3 rounded-pill">
+                  </a>
+                  <div class="media-body">
+                    <div class="reviews-members-header">
+                      <span class="star-rating float-right">
+                        <a href="#">
+                          <i class="icofont-ui-rating active"></i>
+                        </a>
+                        <a href="#">
+                          <i class="icofont-ui-rating active"></i>
+                        </a>
+                        <a href="#">
+                          <i class="icofont-ui-rating active"></i>
+                        </a>
+                        <a href="#">
+                          <i class="icofont-ui-rating active"></i>
+                        </a>
+                        <a href="#">
+                          <i class="icofont-ui-rating"></i>
+                        </a>
+                      </span>
+                      <h6 class="mb-1">
+                        <a class="text-black" href="#">Bojan and Brendan worked together through Talent Marketplace</a>
+                      </h6>
+                      <p class="text-gray">Tue, 20 Mar 2020</p>
+                    </div>
+                    <div class="reviews-members-body">
+                      <a style="font-weight:bold; font-size: larger; ">Client</a>
+                      <p>Excellent work by Bojan. He definitely knows his way around ClickFunnels and how to create eye-catching designs that should convert well.</p>
+                      <p style="color:  rgb(79, 79, 79);">Brendan B. Singapore</p>
+
+                      <a style="font-weight:bold; font-size: larger; ">Talent</a>
+                      <p>Brandan is a great customer, with accurate and precise directions, I was glad to work with you!</p>
+                      <p style="color: rgb(79, 79, 79);">Bojan D. Slovenia</p>
+                    </div>
+                    <div class="reviews-members-footer"></div>
+                    <p class="specialization">Developement & IT</p>
+                  </div>
+                </div>
+              </div>
+              <hr>
+              <div class="reviews-members pt-4 pb-4">
+                <div class="media">
+                  <a href="#">
+                    <img alt="Generic placeholder image" src="http://bootdey.com/img/Content/avatar/avatar6.png" class="mr-3 rounded-pill">
+                  </a>
+                  <div class="media-body">
+                    <div class="reviews-members-header">
+                      <span class="star-rating float-right">
+                        <a href="#">
+                          <i class="icofont-ui-rating active"></i>
+                        </a>
+                        <a href="#">
+                          <i class="icofont-ui-rating active"></i>
+                        </a>
+                        <a href="#">
+                          <i class="icofont-ui-rating active"></i>
+                        </a>
+                        <a href="#">
+                          <i class="icofont-ui-rating active"></i>
+                        </a>
+                        <a href="#">
+                          <i class="icofont-ui-rating"></i>
+                        </a>
+                      </span>
+                      <h6 class="mb-1">
+                        <a class="text-black" href="#">Sasi bought Freddie's project on Project Catalog</a>
+                      </h6>
+                      <p class="text-gray">Tue, 20 Mar 2020</p>
+                    </div>
+                    <div class="reviews-members-body">
+                      <a style="font-weight:bold; font-size: larger; ">Client</a>
+                      <p>Freddie was awesome and quick to complete the job. He delivered what I need without explaining much. A great job is done and we will work again soon.</p>
+                      <p style="color:  rgb(79, 79, 79);">Sasi D. Singapore</p>
+
+                      <a style="font-weight:bold; font-size: larger; ">Talent</a>
+                      <p>Working with Sasi was a breeze. He sent a clear image to be replicated. Made a clear instruction for revision. I made the adjustments then we're done! Looking forward to working with you again!</p>
+                      <p style="color: rgb(79, 79, 79);">Freddie Ray C. Philippines</p>
+                    </div>
+                    <div class="reviews-members-footer"></div>
+                    <p class="specialization">Design & Creative</p>
+                  </div>
+                </div>
+              </div>
+              <hr>
+            </div>
+          </div>
+  </section>
+  <footer class="site-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-3 col-md-2">
+          <a href="index.html">
+            <h4 style="color: white;">maalf</h4>
+          </a>
+          <br>
+          <ul class="footer-links">
+            <li>
+              <span style="cursor:text"><svg width="25px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fit="" preserveAspectRatio="xMidYMid meet" focusable="false">
+                  <g stroke="none" stroke-width="1" fill-rule="evenodd" style="fill: white">
+                    <polygon fill="none" opacity="0" points="2 2 22 2 22 22 2 22"></polygon>
+                    <path d="M11.99,2 C6.47,2 2,6.48 2,12 C2,17.52 6.47,22 11.99,22 C17.52,22 22,17.52 22,12 C22,6.48 17.52,2 11.99,2 Z M18.92,8 L15.97,8 C15.65,6.75 15.19,5.55 14.59,4.44 C16.43,5.07 17.96,6.35 18.92,8 Z M12,4.04 C12.83,5.24 13.48,6.57 13.91,8 L10.09,8 C10.52,6.57 11.17,5.24 12,4.04 Z M4.26,14 C4.1,13.36 4,12.69 4,12 C4,11.31 4.1,10.64 4.26,10 L7.64,10 C7.56,10.66 7.5,11.32 7.5,12 C7.5,12.68 7.56,13.34 7.64,14 L4.26,14 Z M5.08,16 L8.03,16 C8.35,17.25 8.81,18.45 9.41,19.56 C7.57,18.93 6.04,17.66 5.08,16 Z M8.03,8 L5.08,8 C6.04,6.34 7.57,5.07 9.41,4.44 C8.81,5.55 8.35,6.75 8.03,8 Z M12,19.96 C11.17,18.76 10.52,17.43 10.09,16 L13.91,16 C13.48,17.43 12.83,18.76 12,19.96 Z M14.34,14 L9.66,14 C9.57,13.34 9.5,12.68 9.5,12 C9.5,11.32 9.57,10.65 9.66,10 L14.34,10 C14.43,10.65 14.5,11.32 14.5,12 C14.5,12.68 14.43,13.34 14.34,14 Z M14.59,19.56 C15.19,18.45 15.65,17.25 15.97,16 L18.92,16 C17.96,17.65 16.43,18.93 14.59,19.56 Z M16.36,14 C16.44,13.34 16.5,12.68 16.5,12 C16.5,11.32 16.44,10.66 16.36,10 L19.74,10 C19.9,10.64 20,11.31 20,12 C20,12.69 19.9,13.36 19.74,14 L16.36,14 Z"></path>
+                  </g>
+                </svg>
+                <a>Us (International) / </a></span>
+              <a class="englishsec">English</a>
+
+
+              <br><br>
+            </li>
+            <li>
+              <span style="cursor:text"> <svg width="25px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fit="" preserveAspectRatio="xMidYMid meet" focusable="false">
+                  <g stroke="none" stroke-width="1" fill-rule="evenodd" style="fill: white">
+                    <polygon fill="none" opacity="0" points="2 2 22 2 22 22 2 22"></polygon>
+                    <path d="M12,2 C6.486,2 2,6.487 2,12 C2,17.515 6.486,22 12,22 C17.514,22 22,17.515 22,12 C22,6.487 17.514,2 12,2 Z M12,18.25 C11.31,18.25 10.75,17.69 10.75,17 C10.75,16.31 11.31,15.75 12,15.75 C12.69,15.75 13.25,16.31 13.25,17 C13.25,17.69 12.69,18.25 12,18.25 Z M13,13.875 L13,15 L11,15 L11,12 L12,12 C13.104,12 14,11.103 14,10 C14,8.896 13.104,8 12,8 C10.896,8 10,8.896 10,10 L8,10 C8,7.795 9.795,6 12,6 C14.205,6 16,7.795 16,10 C16,11.86 14.723,13.43 13,13.875 Z"></path>
+                  </g>
+                </svg>
+                <a>Help & Support</a></span><br>
+            </li>
+          </ul>
+        </div>
+        <div class="col-xs-2 col-md-2">
+          <h6>Freelancer</h6>
+          <ul class="footer-links">
+            <li><a>Categoris</a></li>
+            <li><a>Projects</a></li>
+            <li><a>Contests</a></li>
+            <li><a>Freelancers</a></li>
+            <li><a>Enterprise</a></li>
+            <li><a>Membership</a></li>
+            <li><a>Preffered Freelancer Program</a></li>
+            <li><a>Project Management</a></li>
+            <li><a>Local Jobs</a></li>
+            <li><a>Photo Anywhere</a></li>
+            <li><a>Showcase</a></li>
+            <li><a>API for Developers</a></li>
+            <li><a>Get Verified</a></li>
+          </ul>
+        </div>
+
+        <div class="col-xs-2 col-md-2">
+          <h6>About</h6>
+          <ul class="footer-links">
+            <li><a>About Us</a></li>
+            <li><a>How it Works</a></li>
+            <li><a>Careers</a></li>
+            <li><a>Security</a></li>
+            <li><a>Investor</a></li>
+            <li><a>Sitemap</a></li>
+            <li><a>Stories</a></li>
+            <li><a>News</a></li>
+          </ul>
+        </div>
+
+        <div class="col-xs-2 col-md-2">
+          <h6>Terms</h6>
+          <ul class="footer-links">
+            <li><a>Privacy Policy</a></li>
+            <li><a>Terms and Conditions</a></li>
+            <li><a>Copyright Policy</a></li>
+            <li><a>Code of Conduct</a></li>
+            <li><a>Fees and Charges</a></li>
+          </ul>
+        </div>
+
+        <div class="col-xs-2 col-md-2">
+          <h6>Partners</h6>
+          <ul class="footer-links">
+            <li><a>Escrow.com</a></li>
+            <li><a>Loadshift</a></li>
+            <li><a>Freightlancer</a></li>
+            <li><a>Warrior Forum</a></li>
+          </ul>
+        </div>
+
+        <div class="col-xs-2 col-md-2">
+          <h6>Apps</h6>
+          <ul class="footer-links1">
+            <li><a href="https://www.apple.com/app-store/"><span style="cursor:pointer"><img src="https://www.f-cdn.com/assets/main/en/assets/footer/app-store.svg"></span></a><br></li>
+            <li class="pt-4"> <a href="https://googleplay.com"><span style="cursor:pointer"><img src="https://www.f-cdn.com/assets/main/en/assets/footer/google-play.svg"></span></a><br></li>
+            <li class="sosmed">
+              <a href="https://facebook.com"><span style="cursor:pointer"><svg class="mx-2" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white" class="bi bi-facebook " viewBox="0 0 16 16">
+                    <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z" />
+                  </svg></span></a>
+              <a href="https://twitter.com"><span style="cursor:pointer"><svg class="mx-2" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white" class="bi bi-twitter" viewBox="0 0 16 16">
+                    <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z" />
+                  </svg></span></a>
+              <a href="https://youtube.com"><span style="cursor:pointer"><svg class="mx-2" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white" class="bi bi-youtube" viewBox="0 0 16 16">
+                    <path d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.007 2.007 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.007 2.007 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31.4 31.4 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.007 2.007 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A99.788 99.788 0 0 1 7.858 2h.193zM6.4 5.209v4.818l4.157-2.408L6.4 5.209z" />
+                  </svg></span></a>
+              <a href="https://instagram.com"><span style="cursor:pointer"><svg class="mx-2" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white" class="bi bi-instagram" viewBox="0 0 16 16">
+                    <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z" />
+                  </svg></span></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+  </footer>
+</body>
