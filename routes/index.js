@@ -4,15 +4,22 @@ var User = require('../models/user');
 var bcrypt = require('bcrypt');
 
 router.get('/', function(req, res) {
-  if (req.session.userId) {
-    res.render('index', {
-      login_info: true
-    });
-  } else {
-    res.render('index', {
-      login_info: false
-    });
-  }
+	console.log("profile");
+  User.findOne({unique_id: req.session.userId}, function(err, data) {
+    console.log("data");
+    console.log(data);
+		if (req.session.userId) {
+			res.render('index', {
+				login_info: true,
+				"name": data.username,
+        "email": data.email
+			});
+		} else {
+			res.render('index', {
+				login_info: false
+			});
+		}
+  });
 });
 router.get(('/SignUp'), async (req, res) => {
   res.render('SignUp')
@@ -35,7 +42,7 @@ router.get(('/LogoDesign'), async (req, res) => {
 router.get(('/Profile'), async (req, res) => {
   res.render('Profile')
 });
-router.get('/login', function(req, res, next) {
+router.get(('/login'), async (req, res, next) => {
   res.render('login.ejs');
 });
 router.get(('/MobileDesign'), async (req, res) => {
@@ -143,25 +150,6 @@ router.post('/login', function(req, res, next) {
     } else {
       res.send({
         "Success": "This Email Is not registered!"
-      });
-    }
-  });
-});
-
-router.get('/profile', function(req, res, next) {
-  console.log("profile");
-  User.findOne({
-    unique_id: req.session.userId
-  }, function(err, data) {
-    console.log("data");
-    console.log(data);
-    if (!data) {
-      res.redirect('/');
-    } else {
-
-      return res.render('data.ejs', {
-        "name": data.username,
-        "email": data.email
       });
     }
   });

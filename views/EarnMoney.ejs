@@ -8,7 +8,7 @@
 <body>
   <div class="container">
     <div class="login">
-      <form action="">
+      <form action="/register" method="POST">
         <a style="text-decoration: none" href="index.html">
           <h1 style="font-family: Brush Script MT;  color: rgba(107, 9, 84, 0.581); font-size: 60px; text-align:center">maalf</h1>
         </a>
@@ -22,9 +22,13 @@
         <h4 style="text-align : center">Or</h4>
         <div class="email">
           <label for="">Email</label>
-          <input type="text" placeholder="example@gmail.com">
+          <input type="text" placeholder="example@gmail.com" name="email">
+          <label for="">Name</label>
+          <input type="text" placeholder="Elizabeth" name="username">
           <label for="">Password</label>
-          <input type="password" placeholder="Password">
+          <input type="password" placeholder="Password" name="password">
+          <label for="">Password Confirmation</label>
+          <input type="password" placeholder="Password" name="passwordConf">
         </div>
         <input type="checkbox">
         <label>Agree to Terms & Conditions</label><br>
