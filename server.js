@@ -14,7 +14,7 @@ var app = express();
 var session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 
-mongoose.connect('mongodb+srv://AndyWan:AndyWan@cluster0.sm2cgbf.mongodb.net/test', {
+mongoose.connect(`${process.env.MONGODB_URL}`, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 }, (err) => {
