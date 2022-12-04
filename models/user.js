@@ -16,7 +16,7 @@ var userSchema = new Schema({
 
 projectSchema = new Schema({
 
-    unique_id: Number,
+    unique_id_project: Number,
     project: String,
     description: String
   }),

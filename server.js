@@ -33,8 +33,10 @@ app.use(session({
   secret: 'uas',
   resave: true,
   saveUninitialized: false,
+  cookie: { maxAge: 59 * 60 * 1000 },
   store: new MongoStore({
-    mongooseConnection: db
+    mongooseConnection: db,
+    clear_interval: 1800
   })
 }));
 
