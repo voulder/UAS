@@ -4,10 +4,7 @@ var User = require('../models/user');
 var bcrypt = require('bcrypt');
 
 router.get('/', function(req, res) {
-	console.log("profile");
-  User.findOne({unique_id: req.session.userId}, function(err, data) {
-    console.log("data");
-    console.log(data);
+  User.findOne({unique_id:req.session.userId}, function(err, data) {
 		if (req.session.userId) {
 			res.render('index', {
 				login_info: true,
@@ -62,10 +59,7 @@ router.get(('/PostAProject'), async (req, res) => {
   res.render('PostAProject')
 });
 router.get(('/viewmore'), async (req, res) => {
-  console.log("profile");
   User.findOne({unique_id: req.session.userId}, function(err, data) {
-    console.log("data");
-    console.log(data);
 		if (req.session.userId) {
 			res.render('viewmore', {
 				login_info: true,
