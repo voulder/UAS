@@ -28,15 +28,14 @@
         <div class="dropdown-divider"></div>
       </ul>
       <form class="form-inline my-2 my-lg-0 ">
-        <a href="LogIn.html"><button class="btn btn-sm col-xs-2 margin-left" type="button">
-            <b>Login</b>
-          </button></a>
-        <a href="SignUp.html"><button class="btn btn-sm col-xs-2 margin-left" type="button">
-            <b>Sign up</b>
-          </button></a>
-        <a href="PostAProject.html"><button type="button" id="btn1" class="btn btn-sm col-xs-2 margin-left">
-            <b>Post a Project</b>
-          </button></a>
+        <% if (login_info) { %>
+          <a href="/logout"><button class="btn btn-sm col-xs-2 margin-left" type="button"><b>Logout</b></button></a>
+          <a href="/Profile"><button class="btn btn-sm col-xs-2 margin-left" type="button"><b><%= name %></b></button></a>
+          <% } else { %>
+          <a href="/login"><button class="btn btn-sm col-xs-2 margin-left" type="button"><b>Login</b></button></a>
+          <a href="/SignUp"><button class="btn btn-sm col-xs-2 margin-left" type="button"><b>Sign up</b></button></a>
+          <% } %>
+          <a href="/PostAProject"><button type="button" id="btn1" class="btn btn-sm col-xs-2 margin-left"><b>Post a Project</b></button></a>
       </form>
     </div>
   </nav>
@@ -384,7 +383,7 @@
           <div class="col-sm mx-0 px-2 py-3  ">
             <a style="color:black" href="Mobile Design.html">
               <div class="img-hover-zoom">
-                <img src="https://www.mindinventory.com/blog/wp-content/uploads/2021/11/mobile-ux-design-best-practices.png" width="290" alt="This zooms-in really well and smooth">
+                <img src="https://www.f-cdn.com/assets/main/en/assets/home/crowd-favorite-redesign/mobile-design-1-v2.jpg?image-optimizer=force&" width="258" alt="This zooms-in really well and smooth">
               </div>
               <h4 class="text-left">Mobile Design.
               </h4>

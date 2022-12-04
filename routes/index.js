@@ -55,7 +55,22 @@ router.get(('/PostAProject'), async (req, res) => {
   res.render('PostAProject')
 });
 router.get(('/viewmore'), async (req, res) => {
-  res.render('viewmore')
+  console.log("profile");
+  User.findOne({unique_id: req.session.userId}, function(err, data) {
+    console.log("data");
+    console.log(data);
+		if (req.session.userId) {
+			res.render('viewmore', {
+				login_info: true,
+				"name": data.username,
+        "email": data.email
+			});
+		} else {
+			res.render('viewmore', {
+				login_info: false
+			});
+		}
+  });
 });
 router.get(('/Website'), async (req, res) => {
   res.render('Website')
