@@ -40,7 +40,13 @@ router.get(('/LogoDesign'), async (req, res) => {
   res.render('LogoDesign')
 });
 router.get(('/Profile'), async (req, res) => {
-  res.render('Profile')
+  User.findOne({unique_id: req.session.userId}, function(err, data) {
+    res.render('Profile', {
+      login_info: true,
+      "name": data.username,
+      "email": data.email
+    });
+  })
 });
 router.get(('/login'), async (req, res, next) => {
   res.render('login.ejs');
