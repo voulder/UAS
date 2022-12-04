@@ -81,7 +81,6 @@ router.get(('/WordPress'), async (req, res) => {
 });
 
 router.post('/register', function(req, res, next) {
-  console.log(req.body);
   var email = req.body.email;
   var username = req.body.username;
   var password = req.body.password;
@@ -182,44 +181,6 @@ router.get('/logout', function(req, res, next) {
       }
     });
   }
-});
-
-router.get('/forgetpass', function(req, res, next) {
-  res.render("forget.ejs");
-});
-
-router.post('/forgetpass', function(req, res, next) {
-
-  User.findOne({
-    email: req.body.email
-  }, function(err, data) {
-    console.log(data);
-    if (!data) {
-      res.send({
-        "Success": "This Email is not registered!"
-      });
-    } else {
-
-      if (req.body.password == req.body.passwordConf) {
-        data.password = req.body.password;
-        data.passwordConf = req.body.passwordConf;
-
-        data.save(function(err, Person) {
-          if (err)
-            console.log(err);
-          else
-            console.log('Success');
-          res.send({
-            "Success": "Password changed!"
-          });
-        });
-      } else {
-        res.send({
-          "Success": "Password does not match!."
-        });
-      }
-    }
-  });
 });
 
 router.post('/postproject', function(req, res, next) {
