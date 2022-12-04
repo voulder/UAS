@@ -233,17 +233,17 @@ router.post('/postproject', function(req, res, next) {
       project: projectInfo.project
     }, function(err, data) {
       if (!data) {
-        var c;
+        var d;
         Project.findOne({}, function(err, data) {
 
           if (data) {
-            c = data.unique_id + 1;
+            d = data.unique_id_project + 1;
           } else {
-            c = 1;
+            d = 1;
           }
 
           var newProject = new Project({
-            unique_id: c,
+            unique_id_project: d,
             project: projectInfo.project,
             description: projectInfo.description
           });
